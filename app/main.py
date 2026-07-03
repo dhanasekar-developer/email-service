@@ -5,10 +5,14 @@ from app.core.logging import logger
 from app.common.request_exeption_handler import register_exeption_handler
 from fastapi.middleware.cors import CORSMiddleware
 from app.email.router import router as email_router
+from app.email.worker import main as email_worker
+import asyncio
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info('App starting')
+    asyncio.create_task(email_worker())
+
     yield
     logger.info('App stoping')
 
