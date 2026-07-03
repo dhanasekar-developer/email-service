@@ -1,0 +1,1 @@
+from app.email.models import EmailRecord

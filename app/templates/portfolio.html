@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: 'Helvetica', Arial, sans-serif;">
+    <span style="color:rgb(13, 152, 217);font-weight: bold;">Message From Portfolio !</span><br><br>
+    <span style="display: block; padding-bottom: 10px;">Hello <span style="font-weight: 600;">{{ to_name }}</span></span>
+    <span style="display: block; padding-bottom: 10px;">You got a new message from <span style="text-transform: capitalize;font-weight: 600;">{{ user_name }}</span></span>
+    <table>
+        <thead>
+            <tr>
+                <td style="text-align: start; font-weight: bold;" colspan="2">
+                    <span style="display: block; padding-bottom: 10px;">Details:</span>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="height: 30px;">
+                <td style="padding-left: 20px;">Name</td>
+                <td style="text-transform: capitalize;"> : {{ user_name }}</td>
+            </tr>
+            <tr style="height: 30px;">
+                <td style="padding-left: 20px;">Company Name</td>
+                <td style="text-transform: capitalize;"> : {{ company_name }}</td>
+            </tr>
+            <tr style="height: 30px;">
+                <td style="padding-left: 20px;">Email ID</td>
+                <td> : {{ email }}</td>
+            </tr>
+            <tr style="height: 30px;">
+                <td style="padding-left: 20px;">Mobile No</td>
+                <td> : {{ mobile_no }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <span style="display: block; padding: 15px 0 10px; font-weight: bold;">
+        Subject : <span style="font-weight: normal; text-transform: capitalize;">{{ subject }}</span>
+    </span>
+    <div style="padding-left: 5px;">
+        <div style="border-left: 4px solid rgb(225, 224, 224); padding: 0px 10px;">
+            <p style="line-height: 20px; text-align: justify;">{{ content }}</p>
+        </div><br>
+    </div>
+    <span>
+        <a href="mailto:{{ email }}" style="color:rgb(0, 153, 255); font-weight: bold; text-decoration: none;">
+            Click to Reply
+        </a>
+    </span>
+</body>
+</html>
