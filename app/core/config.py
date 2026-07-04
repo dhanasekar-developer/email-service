@@ -10,6 +10,8 @@ class Settings(BaseSettings):
 
     ALLOW_ORIGINS: str
 
+    API_KEY: str
+
     SMTP_HOST: str
     SMTP_PORT: str
     SMTP_USERNAME: str

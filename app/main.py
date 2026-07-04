@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.email.router import router as email_router
 from app.email.worker import main as email_worker
 import asyncio
+from app.middleware.api_key import APIKeyMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -26,10 +27,11 @@ register_exeption_handler(app)
 
 app.add_middleware(
     CORSMiddleware,
+    APIKeyMiddleware,
     allow_origins = settings.ALLOW_ORIGINS.split(','),
     allow_methods = [ "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS" ],
     allow_credentials = True,
-    allow_headers = [ '*' ]
+    allow_headers = [ '*' ],
 )
 
 app.include_router(email_router)
