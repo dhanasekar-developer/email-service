@@ -40,7 +40,7 @@ app.include_router(email_router)
 @app.get('/')
 def root():
     return {
-        'message': 'Chat App Is Runing'
+        'message': 'Email Service Is Runing'
     }
 
 @app.get('/health')

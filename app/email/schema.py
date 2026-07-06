@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from app.email.models import TemplateName
 
 class SendEmailRequest(BaseModel):
 
@@ -8,7 +9,7 @@ class SendEmailRequest(BaseModel):
 
     subject: str
 
-    template_name: str
+    template_name: TemplateName
 
     context: dict
 
