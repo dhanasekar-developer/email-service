@@ -25,6 +25,8 @@ app = FastAPI(
 
 register_exeption_handler(app)
 
+app.add_middleware(APIKeyMiddleware)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins = settings.ALLOW_ORIGINS.split(','),
@@ -32,8 +34,6 @@ app.add_middleware(
     allow_credentials = True,
     allow_headers = [ '*' ],
 )
-
-app.add_middleware(APIKeyMiddleware)
 
 app.include_router(email_router)
 

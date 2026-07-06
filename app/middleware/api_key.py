@@ -3,11 +3,21 @@ from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 from app.core.config import settings
 
+EXCLUDED_PATHS = {
+    "/",
+    "/health",
+    "/docs",
+    "/redoc",
+    "/openapi.json",
+}
+
+
+
 class APIKeyMiddleware(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next):
 
-        if request.url.path in ("/", "/docs", "/redoc", "/openapi.json", "/health"):
+        if request.url.path in EXCLUDED_PATHS:
             return await call_next(request)
         
         api_key = request.headers.get('x-api-key')

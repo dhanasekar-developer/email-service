@@ -13,7 +13,7 @@ mail_service = EmailService()
 
 @router.post('/send_email', status_code=status.HTTP_200_OK)
 def send_email(request: SendEmailRequest, db: db_dependency):
-    
+    print('request--------------',request)
     email_record = mail_service.insert_email_record(request, db)
 
     if email_record:
