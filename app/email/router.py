@@ -18,7 +18,10 @@ def send_email(request: SendEmailRequest, db: db_dependency):
 
     if email_record:
         return JSONResponse(
-            status_code=status.HTTP_200_OK
+            status_code=status.HTTP_200_OK,
+            content={
+                'message': 'Email sent successfully!'
+            }
         )
 
     else:
