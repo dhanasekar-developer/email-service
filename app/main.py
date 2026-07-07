@@ -9,6 +9,7 @@ from app.email.worker import main as email_worker
 import asyncio
 from app.middleware.api_key import APIKeyMiddleware
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info('App starting')
