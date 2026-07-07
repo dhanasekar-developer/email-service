@@ -57,8 +57,8 @@ class EmailSender:
         await aiosmtplib.send(
             message,
             hostname=settings.SMTP_HOST,
-            port=settings.SMTP_PORT,
+            port=587,
             username=settings.SMTP_USERNAME,
             password=settings.SMTP_PASSWORD,
-            use_tls=True
+            start_tls=True,
         )
