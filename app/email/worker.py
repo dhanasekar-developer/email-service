@@ -204,6 +204,7 @@ async def start_listener():
 
 
 async def main():
+
     logger.info("Starting email worker...")
     asyncio.create_task(recover_pending())
     await asyncio.gather(
@@ -218,17 +219,3 @@ if __name__ == "__main__":
     except Exception as e:
         logger.exception(f"Worker crashed: {e}")
         raise
-
-async def test():
-    try:
-        reader, writer = await asyncio.wait_for(
-            asyncio.open_connection("smtp.gmail.com", 587),
-            timeout=10,
-        )
-        print("Connected!---------------------------------")
-        writer.close()
-        await writer.wait_closed()
-    except Exception as e:
-        print(e)
-
-asyncio.run(test())
