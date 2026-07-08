@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from .service import EmailService
 from app.db.database import db_dependency
 from .schema import SendEmailRequest
+import asyncio
 
 router = APIRouter(
     prefix='/email',
@@ -32,3 +33,16 @@ def send_email(request: SendEmailRequest, db: db_dependency):
             }
         )
     
+
+@router.get("/smtp-test")
+async def smtp_test():
+    try:
+        reader, writer = await asyncio.wait_for(
+            asyncio.open_connection("smtp.gmail.com", 587),
+            timeout=10,
+        )
+        writer.close()
+        await writer.wait_closed()
+        return {"status": "connected"}
+    except Exception as e:
+        return {"error": str(e), "type": type(e).__name__}
